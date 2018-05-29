@@ -1,0 +1,3 @@
+rootProject.name = 'epam-training-homeworks'
+include 'homework1'
+
