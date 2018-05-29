@@ -1,5 +1,6 @@
 package t06;
 
+
 public class Notebook {
 
     private double CAPACITY_FACTOR = 1.5;
@@ -14,23 +15,11 @@ public class Notebook {
         notes = new Note[capacity];
     }
 
-    public static void main(String[] args) {
-        var notebook = new Notebook();
-        notebook.add("aaa");
-        notebook.add("aab");
-        notebook.add("aac");
-        notebook.getAll();
-        notebook.remove(1);
-        notebook.getAll();
-        notebook.edit(1, "edited note");
-        notebook.getAll();
-
-        for (int i = 0; i < 100; i++)
-            notebook.add(String.valueOf(i));
-
-
-    }
-
+    /**
+     * Adds a note to the notebook
+     *
+     * @param note a note to add
+     */
     public void add(String note) {
 
         notes[size] = new Note(note);
@@ -39,6 +28,11 @@ public class Notebook {
 
     }
 
+    /**
+     * Removes a note from the notebook
+     *
+     * @param index index of note to remove
+     */
     public void remove(int index) throws IllegalArgumentException {
 
         if (index < 0 || index > size - 1)
@@ -49,6 +43,12 @@ public class Notebook {
         size--;
     }
 
+    /**
+     * Edits a note in the notebook
+     *
+     * @param index index of note to edit
+     * @param note  a note to replace with
+     */
     public void edit(int index, String note) throws IllegalArgumentException {
 
         if (index < 0 || index > size - 1)
@@ -57,7 +57,10 @@ public class Notebook {
         notes[index].setNote(note);
     }
 
-    public void getAll() {
+    /**
+     * Prints all existing notes on the screen
+     */
+    public void printAll() {
         for (int i = 0; i < size; i++) {
             System.out.println(notes[i].getNote());
         }
@@ -68,24 +71,22 @@ public class Notebook {
             capacity *= CAPACITY_FACTOR;
             Note[] temp = notes;
             notes = new Note[capacity];
-            for (int i = 0; i < temp.length; i++) {
-                notes[i] = temp[i];
-            }
+            System.arraycopy(temp, 0, notes, 0, temp.length);
         }
     }
 
     class Note {
         String note;
 
-        public Note(String note) {
+        Note(String note) {
             this.note = note;
         }
 
-        public String getNote() {
+        String getNote() {
             return note;
         }
 
-        public void setNote(String note) {
+        void setNote(String note) {
             this.note = note;
         }
     }
