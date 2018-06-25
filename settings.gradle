@@ -1,4 +1,5 @@
 rootProject.name = 'epam-training-homeworks'
 include 'homework1'
 include 'homework2(OOP)'
+include 'homework3(Strings)'
 
