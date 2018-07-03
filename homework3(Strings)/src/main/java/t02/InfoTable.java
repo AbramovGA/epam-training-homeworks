@@ -23,7 +23,7 @@ public class InfoTable {
         bundle = ResourceBundle.getBundle("prop", locale);
     }
 
-    private void chooseLocale() {
+    public void chooseLocale() {
 
 
         Scanner scanner = new Scanner(System.in);
@@ -65,7 +65,7 @@ public class InfoTable {
         System.out.println("Choose language:\nPress 1 for english\nPress 2 for russian\nPress '-1' to exit program\n");
     }
 
-    private void chooseQuestion() {
+    public void chooseQuestion() {
 
         Scanner scanner = new Scanner(System.in);
         int choice;
