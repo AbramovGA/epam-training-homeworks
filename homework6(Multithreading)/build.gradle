@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'personal'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 10
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-params:5.3.0-M1'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.22'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+}
