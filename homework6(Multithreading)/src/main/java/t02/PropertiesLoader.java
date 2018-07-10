@@ -1,21 +1,22 @@
 package t02;
 
+import lombok.Cleanup;
 import lombok.SneakyThrows;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 import static java.util.Map.Entry;
 
 
-public class PropertiesLoader {
+public interface PropertiesLoader {
 
-    private Properties property = new Properties();
+    Object locker = new Object();
 
-    public static void main(String[] args) {
 
-        var loader = new PropertiesLoader();
+    static void main(String[] args) {
 
-        var res = loader.loadProps("test.properties");
+        var res = loadProps("test.properties");
 
         for (Entry entry :
                 res.entrySet()) {
@@ -25,9 +26,13 @@ public class PropertiesLoader {
     }
 
     @SneakyThrows
-    public Properties loadProps(String fileName) {
-        property.load(PropertiesLoader.class.getResourceAsStream("/" + fileName));
-        return property;
+    static Properties loadProps(String fileName) {
+        synchronized (locker) {
+            @Cleanup InputStream inputStream = PropertiesLoader.class.getResourceAsStream(("/" + fileName));
+            var property = new Properties();
+            property.load(inputStream);
+            return property;
+        }
     }
 
 }

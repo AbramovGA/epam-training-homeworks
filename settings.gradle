@@ -5,4 +5,5 @@ include 'homework3(Strings)'
 include 'homework4(IO)'
 include 'homework5(Collections)'
 include 'homework6(Multithreading)'
+include 'homework7(JDBC)'
 
