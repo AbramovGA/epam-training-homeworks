@@ -1,5 +1,5 @@
-create table if not exists students (
+create table if not exists books (
   id       identity,
   name     varchar not null,
-  group_id int
+  author varchar
 );

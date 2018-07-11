@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 class ConnectionPoolTest {
 
-    String GET_STUDENTS_SQL = "select id, name, group_id from students";
+    String GET_STUDENTS_SQL = "select id, name, author from students";
 
     String ID_FIELD = "id";
     String NAME_FIELD = "name";
-    String GROUP_ID_FIELD = "group_id";
+    String AUTHOR_FIELD = "author";
 
     @Test
     @SneakyThrows
@@ -31,6 +31,6 @@ class ConnectionPoolTest {
         assertTrue(resultSet.next());
         assertThat(resultSet.getInt(ID_FIELD), is(1));
         assertThat(resultSet.getString(NAME_FIELD), is("Вася Пупкин"));
-        assertThat(resultSet.getInt(GROUP_ID_FIELD), is(123456));
+        assertThat(resultSet.getInt(AUTHOR_FIELD), is(123456));
     }
 }

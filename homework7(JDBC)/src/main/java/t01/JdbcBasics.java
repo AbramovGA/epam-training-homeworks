@@ -9,18 +9,18 @@ import java.sql.ResultSet;
 public interface JdbcBasics {
     String DB_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
 
-    String CREATE_TABLE_SQL = "create table students (id identity, name varchar not null, group_id int)";
-    String INSERT_STUDENT1_SQL = "insert into students (name, group_id) values ('Вася Пупкин', 123456)";
-    String INSERT_STUDENT2_SQL = "insert into students (name, group_id) values ('Иван Иванов', 42)";
-    String SELECT_ALL_SQL = "select id, name, group_id from students";
-    String SELECT_ONE_SQL = "select id, name, group_id from students where id=?";
-    String UPDATE_SQL = "update students set group_id=? where name=?";
+    String CREATE_TABLE_SQL = "create table students (id identity, name varchar not null, author int)";
+    String INSERT_STUDENT1_SQL = "insert into students (name, author) values ('Вася Пупкин', 123456)";
+    String INSERT_STUDENT2_SQL = "insert into students (name, author) values ('Иван Иванов', 42)";
+    String SELECT_ALL_SQL = "select id, name, author from students";
+    String SELECT_ONE_SQL = "select id, name, author from students where id=?";
+    String UPDATE_SQL = "update students set author=? where name=?";
     String DROP_TABLE_SQL = "DROP TABLE students;";
 
 
     String ID_FIELD = "id";
     String NAME_FIELD = "name";
-    String GROUP_ID_FIELD = "group_id";
+    String AUTHOR_FIELD = "author";
 
     @SneakyThrows
     static void printQuery(ResultSet resultSet) {
@@ -28,7 +28,7 @@ public interface JdbcBasics {
             System.out.printf("%d %s %d%n",
                     resultSet.getInt(ID_FIELD),
                     resultSet.getString(NAME_FIELD),
-                    resultSet.getInt(GROUP_ID_FIELD));
+                    resultSet.getInt(AUTHOR_FIELD));
         System.out.println();
 
     }

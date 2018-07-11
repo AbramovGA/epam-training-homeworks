@@ -1,2 +1,2 @@
-insert into students(name, group_id)
-values('Вася Пупкин', 123456);
+insert into books(name, author)
+values('Мы', 'Замятин Е. И.');
